@@ -344,7 +344,7 @@ class CreateModpackPopup : public geode::Popup {
     // the pick-your-mods screen
     // 5 per page, more looked cramped
 protected:
-    static constexpr size_t PAGE_SIZE = 5;
+    static constexpr size_t BIG_BALLS = 5;
     TextInput* m_nameInput = nullptr;
     CCLabelBMFont* m_hint = nullptr;
     CCMenu* m_rowMenu = nullptr;
@@ -446,7 +446,7 @@ protected:
     }
 
     size_t pageCount() const {
-        return std::max<size_t>(1, (m_allMods.size() + PAGE_SIZE - 1) / PAGE_SIZE);
+        return std::max<size_t>(1, (m_allMods.size() + BIG_BALLS - 1) / BIG_BALLS);
     }
 
     void updatePageLabel() {
@@ -477,8 +477,8 @@ protected:
             return;
         }
 
-        size_t start = m_page * PAGE_SIZE;
-        size_t end = std::min(start + PAGE_SIZE, m_allMods.size());
+        size_t start = m_page * BIG_BALLS;
+        size_t end = std::min(start + BIG_BALLS, m_allMods.size());
         for (size_t i = start; i < end; i++) {
             size_t row = i - start;
             float y = py + ph - 15 - row * rowH;
@@ -636,7 +636,7 @@ public:
 class ModpacksPopup : public geode::Popup {
     // main list, shows saved packs
 protected:
-    static constexpr size_t PAGE_SIZE = 4;
+    static constexpr size_t BIG_BALLS = 4;
     CCMenu* m_rowMenu = nullptr;
     CCLayer* m_rowLayer = nullptr;
     CCLabelBMFont* m_pageLabel = nullptr;
@@ -710,7 +710,7 @@ protected:
     }
 
     size_t pageCount() const {
-        return std::max<size_t>(1, (m_packs.size() + PAGE_SIZE - 1) / PAGE_SIZE);
+        return std::max<size_t>(1, (m_packs.size() + BIG_BALLS - 1) / BIG_BALLS);
     }
 
     void refresh() {
@@ -735,8 +735,8 @@ protected:
             empty2->setPosition({px + pw / 2, py + ph / 2 - 12});
             m_rowLayer->addChild(empty2);
         } else {
-            size_t start = m_page * PAGE_SIZE;
-            size_t end = std::min(start + PAGE_SIZE, m_packs.size());
+            size_t start = m_page * BIG_BALLS;
+            size_t end = std::min(start + BIG_BALLS, m_packs.size());
             for (size_t i = start; i < end; i++) {
                 float y = py + ph - 15 - (i - start) * rowH;
 
